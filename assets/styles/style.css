@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap');
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+
 }
 
 .container {
@@ -11,22 +14,39 @@
   margin: 0 auto;
   padding: 30px;
   line-height: 2;
+  font-family: Poppins, sans-serif;
 }
 
 h1 {
   color: #000;
   text-align: center;
   padding: 50px 0;
+  font-family: Poppins, sans-serif;
   font-size: 40px;
 }
 
+.div-for-input {
+  /* display: flex; */
+  /* gap: 10px; */
+  /* background: red; */
+}
+
 input {
-  padding: 5px;
-  width: 80%;
+  padding: 8px;
+  border-radius: 5px;
+  width: 72%;
+  font-weight: 600;
+}
+
+.small-text {
+  color: red;
+  font-style: italic;
 }
 
 label {
   padding: 10px 0;
+  font-size: 20px;
+  font-weight: 700;
 }
 
 .chunks,
@@ -39,12 +59,10 @@ label {
 .action {
   padding: 8px 18px;
   border-radius: 5px;
-  border: none;
-  box-shadow: 3px 6px 8px #343436;
   margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  font-size: 15px;
+  /* display: flex;
+  justify-content: center; */
+  /* font-size: 15px; */
 }
 
 .action:hover {
