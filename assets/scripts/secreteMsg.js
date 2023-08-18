@@ -80,9 +80,9 @@ const splitText = (string, colums) => {
 
 //* function to convert split text into chunks strings
 function chunkToString (splitText) {
-  return `'${splitText
+  return `${splitText
     .map((chunk) => chunk.slice(1, chunk.length - 1))
-    .join(`&nbsp;&nbsp;`)}'`
+    .join('&nbsp;&nbsp;')}`
 }
 
 //* function to read each characters on the row left to right. takes array of normalized text and the length of the text
@@ -93,7 +93,7 @@ function chunkToString (splitText) {
  * @returns a ciphered message string
  */
 
-function secretText(newArray) {
+function secretText (newArray) {
   const temp = []
   let i = 0
   let j = 1
@@ -148,7 +148,7 @@ function fireFn (event) {
 
   //* to show the first rectangle of normalized text
   const splitText1 = splitText(normalizeT, rAndC[1])
-  console.log(splitText1)
+  // console.log(splitText1)
   firstRect.innerHTML = rectangle(splitText1)
   // console.log("first rectangle", firstRect.innerText)
 
