@@ -124,7 +124,7 @@ function rectangle (splitedText) {
   for (let i = 0; i < splitedText.length; i++) {
     newArray.push(splitedText[i] + '<br>')
   }
-  return newArray.join('')
+  return newArray.join(' ')
 }
 
 //* event
@@ -163,5 +163,4 @@ function fireFn (event) {
   const splitText2 = splitText(newSecretText, rAndC[0])
   console.log('splited text2', splitText2)
   secondRect.innerHTML = rectangle(splitText2)
-  // console.log("second rectangle", secondRect.innerHTML);
 }
