@@ -4,17 +4,17 @@ const secondRect = document.querySelector('.second-rectangle')
 const action = document.querySelector('.action')
 const small = document.querySelector('.small-text')
 
-//*function to normalize a text
+//* function to normalize a text
 /**
  *
  * @param {string} chaine
  * @returns a normalized string
  */
 const normalizedText = (chaine) => {
-  let newArray = []
+  const newArray = []
   chaine = chaine.split('')
 
-  for (let elem of chaine) {
+  for (const elem of chaine) {
     if(/\w/.test(elem)){
       newArray.push(elem)
     }
@@ -29,17 +29,17 @@ const normalizedText = (chaine) => {
  * @returns Array of numbers (rows and columns)
  */
 
-function columsAndRowLength(chaine) {
+function columsAndRowLength (chaine) {
   /* from the fact that chaine.length = C*R and C>=R;
  we can take C = R+K and (K as natural number)
    we'll have this equation r²+kr-N=0 with N=chaine.length,  to solve.
    now we take the case where K=1; as 1 is the smallest integer after 0; to avoid N=C² and to be close to N as much as possible. The value of K chosen, just help us to get the appropriate value of C that we will use because there are many of them. since C = R + K.*/
-  let N = chaine.length
-  let delta = 1 + 4 * N
-  //we need just the rounded positive r from the two solutions of equation r²+kr-N=0.
-  let row = Math.round((-1 + Math.sqrt(delta)) / 2)
-  let nearMultipleOfr = Math.ceil(N / row) * row
-  let column = nearMultipleOfr / row
+  const N = chaine.length
+  const delta = 1 + 4 * N
+  // we need just the rounded positive r from the two solutions of equation r²+kr-N=0.
+  const row = Math.round((-1 + Math.sqrt(delta)) / 2)
+  const nearMultipleOfr = Math.ceil(N / row) * row
+  const column = nearMultipleOfr / row
 
   return [row, column]
 }
@@ -53,19 +53,19 @@ function columsAndRowLength(chaine) {
  */
 const splitText = (string, colums) => {
   if (string.length > 50) {
-    let newArray = [],
-      usedStrings = []
+    const newArray = []
+    let usedStrings = []
     // to create new array with chunks
     for (let i = 0; i < string.length; i += colums) {
       newArray.push(`'${string.slice(i, i + colums)}'`)
     }
     // try to fill the gap of the last substring in case the rectangle is not perfect
     usedStrings = newArray
-    let long2 = newArray.length
+    const long2 = newArray.length
     // to get the before last element length of newArray
-    let L2 = usedStrings[long2 - 2].length
+    const L2 = usedStrings[long2 - 2].length
     // to get the last element length of newArray
-    let L1 = usedStrings[long2 - 1].length
+    const L1 = usedStrings[long2 - 1].length
     // check if the last substring is shorter than one before.
     if (L2 > L1) {
       // append '$' character to the last substring
@@ -93,7 +93,7 @@ function secretText(newArray) {
   let temp = []
   let i = 0,
     j = 1
-  while (j < newArray[0].length-1) {
+  while (j < newArray[0].length - 1) {
     while (i < newArray.length) {
       temp.push(newArray[i][j])
       i++
@@ -103,7 +103,7 @@ function secretText(newArray) {
     // need to restart at the beginning (top line) of the array
     i = 0
   }
-  //to show the secret text
+  // to show the secret text
   return temp.join("")
 }
 
@@ -115,49 +115,48 @@ function secretText(newArray) {
  * @returns an Array of strings
  */
 
-function rectangle(splitedText) {
-  let newArray = []
+function rectangle (splitedText) {
+  const newArray = []
   for (let i = 0; i < splitedText.length; i++) {
     newArray.push(splitedText[i] + "<br>")
   }
   return newArray.join("")
 }
 
-
 //* event
 action.addEventListener("click", fireFn)
 
-function fireFn(event) {
+function fireFn (event) {
   event.preventDefault()
 
   const inpuTxt = document.querySelector(".input-text").value
 
   // if(inpuTxt.length )
-  //*to  normalize text
-  let normalizeT = normalizedText(inpuTxt)
+  // *to  normalize text
+  const normalizeT = normalizedText(inpuTxt)
   console.log("normalize text", normalizeT)
 
   //* to get the value of row (r) and columns (c)
   let rAndC = columsAndRowLength(normalizeT)
-  //test
+  // test
   console.log("the length is", normalizeT.length)
   console.log("r=", rAndC[0], "c=", rAndC[1])
 
   //* to show the first rectangle of normalized text
-  let splitText1 = splitText(normalizeT, rAndC[1])
+  const splitText1 = splitText(normalizeT, rAndC[1])
   console.log(splitText1)
   firstRect.innerHTML = rectangle(splitText1)
   console.log("first rectangle", firstRect.innerText)
 
   //* to show the encoded message in chunks
-  let newSecretText = secretText(splitText1)
-  let newSplitText = splitText(newSecretText, rAndC[0])
+  const newSecretText = secretText(splitText1)
+  const newSplitText = splitText(newSecretText, rAndC[0])
   encodeText.innerHTML = chunkToString(newSplitText)
   console.log("newspliText", newSplitText)
   // console.log("encoded message", encodeText.innerHTML);
 
   //* to show the second rectangle from the encoded message
-  let splitText2 = splitText(newSecretText, rAndC[0])
+  const splitText2 = splitText(newSecretText, rAndC[0])
   console.log("splited text2", splitText2)
   secondRect.innerHTML = rectangle(splitText2)
   // console.log("second rectangle", secondRect.innerHTML);
