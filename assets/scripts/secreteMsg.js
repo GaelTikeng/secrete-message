@@ -69,7 +69,9 @@ const splitText = (string, colums) => {
     // check if the last substring is shorter than one before.
     if (L2 > L1) {
       // append '$' character to the last substring
-      usedStrings[long2 - 1] = usedStrings[long2 - 1].padEnd(L2, ' ')
+      usedStrings[long2 - 1] = `"${usedStrings[long2 - 1]
+        .slice(1, usedStrings[long2 - 1].length - 1)
+        .padEnd(L2, " ")}"`
       return usedStrings
     }
     return newArray;
@@ -78,7 +80,9 @@ const splitText = (string, colums) => {
 
 //* function to convert split text into chunks strings
 function chunkToString(splitText) {
-  return splitText.join(`&nbsp;&nbsp;`)
+  return `"${splitText
+    .map((chunk) => chunk.slice(1, chunk.length - 1))
+    .join(`&nbsp;&nbsp;`)}"`
 }
 
 //* function to read each characters on the row left to right. takes array of normalized text and the length of the text
