@@ -15,12 +15,12 @@ const normalizedText = (chaine) => {
   chaine = chaine.split('')
 
   for (const elem of chaine) {
-    if(/\w/.test(elem)){
+    if (/\w/.test(elem)) {
       newArray.push(elem)
     }
   }
   return newArray.join('').toLowerCase()
-};
+}
 
 //* function to get the number of columns and rows from a string length
 /**
@@ -33,7 +33,7 @@ function columsAndRowLength (chaine) {
   /* from the fact that chaine.length = C*R and C>=R;
  we can take C = R+K and (K as natural number)
    we'll have this equation r²+kr-N=0 with N=chaine.length,  to solve.
-   now we take the case where K=1; as 1 is the smallest integer after 0; to avoid N=C² and to be close to N as much as possible. The value of K chosen, just help us to get the appropriate value of C that we will use because there are many of them. since C = R + K.*/
+   now we take the case where K=1; as 1 is the smallest integer after 0; to avoid N=C² and to be close to N as much as possible. The value of K chosen, just help us to get the appropriate value of C that we will use because there are many of them. since C = R + K. */
   const N = chaine.length
   const delta = 1 + 4 * N
   // we need just the rounded positive r from the two solutions of equation r²+kr-N=0.
@@ -69,20 +69,20 @@ const splitText = (string, colums) => {
     // check if the last substring is shorter than one before.
     if (L2 > L1) {
       // append '$' character to the last substring
-      usedStrings[long2 - 1] = `"${usedStrings[long2 - 1]
+      usedStrings[long2 - 1] = `'${usedStrings[long2 - 1]
         .slice(1, usedStrings[long2 - 1].length - 1)
-        .padEnd(L2, " ")}"`
+        .padEnd(L2, ' ')}'`
       return usedStrings
     }
-    return newArray;
+    return newArray
   } else small.innerText = 'String too short. Need at least 50 characters'
-};
+}
 
 //* function to convert split text into chunks strings
-function chunkToString(splitText) {
-  return `"${splitText
+function chunkToString (splitText) {
+  return `'${splitText
     .map((chunk) => chunk.slice(1, chunk.length - 1))
-    .join(`&nbsp;&nbsp;`)}"`
+    .join(`&nbsp;&nbsp;`)}'`
 }
 
 //* function to read each characters on the row left to right. takes array of normalized text and the length of the text
@@ -94,9 +94,9 @@ function chunkToString(splitText) {
  */
 
 function secretText(newArray) {
-  let temp = []
-  let i = 0,
-    j = 1
+  const temp = []
+  let i = 0
+  let j = 1
   while (j < newArray[0].length - 1) {
     while (i < newArray.length) {
       temp.push(newArray[i][j])
@@ -108,7 +108,7 @@ function secretText(newArray) {
     i = 0
   }
   // to show the secret text
-  return temp.join("")
+  return temp.join('')
 }
 
 //* function to create rectangular text
@@ -122,46 +122,46 @@ function secretText(newArray) {
 function rectangle (splitedText) {
   const newArray = []
   for (let i = 0; i < splitedText.length; i++) {
-    newArray.push(splitedText[i] + "<br>")
+    newArray.push(splitedText[i] + '<br>')
   }
-  return newArray.join("")
+  return newArray.join('')
 }
 
 //* event
-action.addEventListener("click", fireFn)
+action.addEventListener('click', fireFn)
 
 function fireFn (event) {
   event.preventDefault()
 
-  const inpuTxt = document.querySelector(".input-text").value
+  const inpuTxt = document.querySelector('.input-text').value
 
   // if(inpuTxt.length )
   // *to  normalize text
   const normalizeT = normalizedText(inpuTxt)
-  console.log("normalize text", normalizeT)
+  // console.log("normalize text", normalizeT)
 
   //* to get the value of row (r) and columns (c)
-  let rAndC = columsAndRowLength(normalizeT)
+  const rAndC = columsAndRowLength(normalizeT)
   // test
-  console.log("the length is", normalizeT.length)
-  console.log("r=", rAndC[0], "c=", rAndC[1])
+  // console.log("the length is", normalizeT.length)
+  // console.log('r=', rAndC[0], 'c=', rAndC[1])
 
   //* to show the first rectangle of normalized text
   const splitText1 = splitText(normalizeT, rAndC[1])
   console.log(splitText1)
   firstRect.innerHTML = rectangle(splitText1)
-  console.log("first rectangle", firstRect.innerText)
+  // console.log("first rectangle", firstRect.innerText)
 
   //* to show the encoded message in chunks
   const newSecretText = secretText(splitText1)
   const newSplitText = splitText(newSecretText, rAndC[0])
   encodeText.innerHTML = chunkToString(newSplitText)
-  console.log("newspliText", newSplitText)
+  // console.log('newspliText', newSplitText)
   // console.log("encoded message", encodeText.innerHTML);
 
   //* to show the second rectangle from the encoded message
   const splitText2 = splitText(newSecretText, rAndC[0])
-  console.log("splited text2", splitText2)
+  console.log('splited text2', splitText2)
   secondRect.innerHTML = rectangle(splitText2)
   // console.log("second rectangle", secondRect.innerHTML);
 }
