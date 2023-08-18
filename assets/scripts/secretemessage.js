@@ -1,30 +1,4 @@
-// function secretemessage (phrase) {
-//   let res = ''
-//   let lower = ''
-  
 
-//   let text = removeSpecialChars (phrase)
-//   let text1 = ''
-//   let n = text.length
-//   let arr = []
-//   let c = 6
-//   let r = 5
-
-
-//   // loop through the lenght of the string
-
-//   for (let i = 0; i <= n; i++) {
-//     for (let j = 0; j <= c; j++) {
-     
-
-//     }
-//   }
-//   return arr
-// }
-// console.log(secretemessage("I My name? is DAGelziefh"))
-
-
-// function that removes special charaters and spaces (normalized form)
 
 function removeSpecialChars (str = '') {
   let res = ''
