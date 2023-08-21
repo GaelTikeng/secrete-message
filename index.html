@@ -8,18 +8,23 @@
 </head>
 <body>
   <h1>Secret Message App</h1>
-    <main class="container">
-      <div class="div-for-input">
-        <label for="input-text">Enter your text</label>
-        <input type="text" name="input-text" class="input-text" />
-      </div>
-      <div class="first-rectangle">first rectangle</div>
-      <div class="chunks">chunks</div>
-      <div class="second-rectangle">second rectangle</div>
-      <div class="div-btn-action">
-        <button class="action">Chow</button>
-      </div>
-    </main>
+  <main class="container">
+    <div class="div-for-input">
+      <input type="text" name="input-text" class="input-text" />
+      <button class="action">Encode</button>
+
+    </div>
+    <p class="small-text"></p>
+    <label for="first-rectangle">First rectangle of Normalized text</label>
+    <div class="rectangle"></div>
+    <label for="chunks">encoded message in chunks:</label>
+    <p class="chunks"></p>
+    <label for="second-rectangle" >Second rectangle from encoded message:</label>
+    <div class="second-rectangle"></div>
+    
+  </main>
+  
 </body>
+<script src="./assets/scripts/secreteMsg.js"></script>
 
 </html>

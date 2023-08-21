@@ -1,22 +1,100 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap");
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
-body {
-  width: 100vw;
-  height: 100vh;
-  background: url('../images/bgimagfromphotodeposit.jpg');
-  background-position: right;
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 2rem 3rem;
-  margin: 0;
+.container {
+  border-radius: 8px;
+  width: 80%;
+  box-shadow: 2px 4px 6px #494747;
+  margin: 0 auto;
+  padding: 30px;
+  line-height: 2;
+  font-family: Poppins, sans-serif;
 }
 
 h1 {
-  color: aliceblue;
-  font-family: Tahoma, Verdana, Geneva, sans-serif;
+  color: #000;
+  text-align: center;
+  padding: 50px 0;
+  font-family: Poppins, sans-serif;
   font-size: 40px;
+}
+
+input {
+  padding: 8px;
+  border-radius: 5px;
+  width: 72%;
+  font-weight: 600;
+}
+
+.small-text {
+  color: red;
+  font-style: italic;
+}
+
+label {
+  padding: 10px 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.chunks {
+  height: fit-content;
+  padding: 10px 0;
+  display: inline-block;
+  flex-wrap: wrap;
+  width: 100%;
+  text-align: justify;
+}
+
+.second-rectangle,
+.rectangle {
+  height: fit-content;
+  padding: 10px 0;
+}
+
+.action {
+  padding: 8px 18px;
+  border-radius: 5px;
+  margin: 0 auto;
+}
+
+.action:hover {
+  cursor: pointer;
+  transform: translateY(3px);
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: 94vw;
+  }
+
+  input {
+    margin-bottom: 10px;
+  }
+
+  .chunks {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  input {
+    width: 100%;
+  }
+
+  .container {
+    box-shadow: none;
+    padding: 0 15px;
+  }
+
+  .div-for-input {
+    display: block;
+    gap: 2;
+  }
 }
